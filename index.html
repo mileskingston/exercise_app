@@ -1,0 +1,96 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Workout Log | Miles Kingston</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/controllers/main.js"></script>
+        <script src="js/directives/main.js"></script>
+
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body ng-app="workoutLog">
+        <script type="text/ng-template" id="customTemplate.html">
+          <a>
+              <img data-ng-src="{{match.model.image}}" width="30">
+              <span data-ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
+          </a>
+        </script>
+
+        <header class="header">
+            <h1><span class="logo"><img src="images/logo.svg" alt="logo" title="logo" /></span></h1>
+        </header>
+        <div class="container container-main" ng-controller="MainCtrl">
+            <form name="addNewExercise" class="clearfix ng-cloak" novalidate>
+                <div class="row">
+                    <div class="col col-60">
+                        <input type="text" name="name" class="form-control" placeholder="Add exercise"
+                            autocomplete="off" required="required"
+                            data-ng-pattern="regex.name" data-ng-model="exerciseName" data-ng-focus="formReset()" 
+                            data-uib-typeahead="exercise as exercise.name for exercise in preExercises | filter:{name:$viewValue}"
+                            data-typeahead-template-url="customTemplate.html" />
+                        <a class="btn-clear cross-icon" data-ng-click="clearName()">&times;</a>
+                        <div data-ng-show="validateForm(addNewExercise, addNewExercise.name)" class="alert alert-error">Please select an exercise</div>
+                    </div>
+
+                    <div class="col col-40">
+                        <input class="form-control sets-input" name="sets" type="number" min="3" max="5"
+                            required="required" placeholder="Sets" 
+                            data-ng-model="sets" data-ng-focus="formReset()" />
+                        <button type="submit" class="btn btn-add btn-primary pull-right" data-ng-disabled="exerciseName.length < 1" data-ng-click="addExercise()">Add</button>
+                        <div data-ng-show="validateForm(addNewExercise, addNewExercise.sets)" class="alert alert-error">Incorrect sets</div>
+                    </div>
+                </div>  
+            </form>
+
+            <div class="col col-table padding-none">
+                <div class="row" data-ng-repeat="exercise in exercises">
+                    <div class="column">
+                        <div class="title">Name</div>
+                        <div class="name"><span data-ng-bind="exercise.name"></span></div>
+                    </div>
+                    <div class="column">
+                        <div class="title">Sets</div>
+                        <div class="setnumber"><span data-ng-bind="exercise.sets"></span></div>
+                    </div>
+                    <div class="column">
+                        <div class="title">Weight (kg)</div>
+                        <div class="weight">
+                            <div class="set">
+                                <label for="set-1">1</label>
+                                <input id="set-1" name="weightsOne" type="number" min="6" max="100" step="2" />
+                            </div>
+                            <div class="set">
+                                <label for="set-2">2</label>
+                                <input id="set-2" name="weightsTwo" type="number" min="6" max="100" step="2" />
+                            </div>
+                            <div class="set">
+                                <label for="set-3">3</label>
+                                <input id="set-3" name="weightsThree" type="number" min="6" max="100" step="2" />
+                            </div>
+                            <div class="set" data-ng-if="exercise.sets > 3">
+                                <label for="set-4">4</label>
+                                <input id="set-4" name="weightsFour" type="number" min="6" max="100" step="2" />
+                            </div>
+                            <div class="set" data-ng-if="exercise.sets > 4">
+                                <label for="set-5">5</label>
+                                <input id="set-5" name="weightsFive" type="number" min="6" max="100" step="2" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div data-ng-show="exercises.length > 1" class="text-right ng-cloak">
+                <button type="submit" value="submit" class="btn btn-primary" data-ng-click="removeAllExercise()">Delete all</button>
+            </div>
+        </div>
+    </body>
+</html>

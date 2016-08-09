@@ -1,0 +1,84 @@
+.text-left {
+	text-align: left;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+// Clearfix
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+
+.no-pad {
+	padding: 0;
+}
+
+.show {
+	display: block;
+}
+
+.hide {
+	display: none;
+}
+
+.row {
+	margin-left: -1em;
+	margin-right: -1em;
+}
+
+.col {
+	width: 100%;
+	position: relative;
+	float: left;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+.col-100 {
+	width: 100%;
+}
+
+.col-75 {
+	@media screen and (min-width: @screen-mobile) {
+		width: 75%;
+	}
+}
+
+.col-60 {
+	@media screen and (min-width: @screen-mobile) {
+		width: 60%;
+	}
+}
+
+.col-50 {
+	@media screen and (min-width: @screen-mobile) {
+		width: 50%;
+	}
+}
+
+.col-40 {
+	@media screen and (min-width: @screen-mobile) {
+		width: 40%;
+	}
+}
+
+.col-25 {
+	@media screen and (min-width: @screen-mobile) {
+		width: 25%;
+	}
+}
+
+.padding-none {
+	padding: 0!important;
+}

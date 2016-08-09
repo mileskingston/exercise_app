@@ -1,0 +1,261 @@
+*, *:before, *:after {
+	.box-sizing(border-box);
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+html {
+	font-size: 62.5%;
+	-webkit-tap-highlight-color: ;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+body {
+	font-size: @font-size-base;
+	font-family: @font-family-base;
+	line-height: 1.5;
+	color: @text-color;
+	background-color: @bg-color-base;
+}
+
+h1, h2, h3 {
+	font-weight: @font-weight-semi-bold;
+	line-height: 1.1;
+}
+
+h1 {
+	font-size: 3.6rem;
+}
+
+h2 {
+	font-size: 2.4rem;
+}
+
+h3 {
+	font-size: 2rem;
+}
+
+a, a:hover, a:focus {
+	color: @grey-light;
+	text-decoration: none;
+}
+
+input, textarea, select {
+    display: block;
+    width: 100%;
+    height: @forms-height;
+    padding: 6px 12px;
+    font-size: @font-size-small;
+    line-height: @forms-line-height;
+    background-color: @white;
+    background-image: none;
+    border: 1px solid @grey;
+	.border-radius(3px);
+	@media screen and (max-width: @screen-mobile) {
+		margin-bottom: 0.6em;
+	}
+
+	&:focus {
+		border-color: @grey-dark;
+	}
+}
+
+label {
+	height: @forms-height;
+	padding: 0 8px;
+}
+
+button {
+	cursor: pointer;
+}
+
+.btn {
+	display: inline-block;
+    height: @forms-height;
+    padding: @forms-padding;
+    font-size: @font-size-small;
+    font-weight: @font-weight-normal;
+    line-height: @forms-line-height;
+    .border-radius(3px);
+    border: none;
+}
+
+.btn-add { 
+	position: absolute; 
+	top: 0;
+	right: 1.3em;
+}
+.btn-close {
+	background: transparent;
+	border: none;
+}
+.btn-clear {
+    line-height: @forms-height;
+	padding: 0 1em;
+	position: absolute; 
+	top: 0;
+	right: 0.6em;	
+	z-index: 1;
+	cursor: pointer;
+}
+
+.cross-icon {
+	font-size: @font-size-large;
+	color: @grey-dark;
+}
+
+.alert {
+	padding: 0.8rem;
+	margin: 0.8rem 0;
+	font-size: @font-size-small;
+
+	&.alert-error {
+		color: @state-error-text;
+		background-color: @state-error-bg;
+	}
+}
+
+pre {
+    display: block;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    color: #333;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #f5f5f5;
+}
+
+.col-table {
+	margin-top: 2rem;
+    font-size: @font-size-small;
+    color: @grey-darker;
+    background-color: @table-bg;
+
+	.row {
+		margin-left: 0;
+		margin-right: 0;
+	    vertical-align: bottom;
+	    border-bottom: 2px solid @table-border-color;
+
+	    .column {
+	    	width: 33.333333%;
+	    	float: left;
+	    }
+	}
+}
+
+
+.table>tbody>tr>td {
+	position: relative;
+}
+.table>tbody>tr>td, 
+.table>tbody>tr>th, 
+.table>tfoot>tr>td, 
+.table>tfoot>tr>th, 
+.table>thead>tr>td, 
+.table>thead>tr>th {
+    padding: @table-cell-padding;
+    line-height: @forms-height;
+    vertical-align: top;
+    border-top: 1px solid @table-border-color;
+}
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: @table-bg-accent;
+}
+
+.header {
+	.container();
+	text-align: center;
+}
+
+.container {
+	.container();
+}
+
+.container-main {
+	min-height: 5rem;
+}
+
+.sets-input {
+	padding-right: 60px;
+}
+
+.lead {
+	height: 200px;
+}
+
+.set {
+	width: 100%;
+	display: inline-block;
+	@media screen and (min-width: @screen-mobile) {
+		width: auto;
+	}
+
+	input {
+		padding-right: 6px;
+	}
+
+	input, label {
+		width: auto;
+		display: inline-block;
+	}
+}
+
+.dropdown-menu {
+    display: none;
+	position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    float: left;
+    min-width: 280px;
+    max-height: 29rem;
+    font-size: @font-size-medium;
+    list-style: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: @white;
+    .background-clip(padding-box);
+    border: @border-default;
+    .border-radius(4px);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    .box-shadow(0 6px 12px rgba(0,0,0,.175));
+
+	li {
+		margin-bottom: 0;
+		border: none;
+		border-bottom: @border-default;
+
+		&:last-child {
+			border-bottom: none;
+		}
+
+		a {
+			display: block;
+			padding: 10px;
+			cursor: pointer;
+
+			&:hover, &:focus {
+				background-color: @grey-lighter;
+			}
+
+			span {
+				float: right;
+			}
+		}
+
+		strong {
+			color: @grey-darker;
+		}
+	}
+
+	img {
+		max-width: 100px;
+	}
+}
